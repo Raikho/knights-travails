@@ -2,7 +2,7 @@
     --bg: darkslateblue;
     --board-container-bg: #94a3b8;
     --board-bg: #e2e8f0;
-    --fg: #f0f9ff;
+    --fg: #1e293b;
 }
 
 body {
@@ -37,5 +37,22 @@ body {
 
     border: 4px solid black;
     border-radius: 4px;
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+.square {
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    justify-self: center;
+}
+
+.square.dark {
+    width: 100%;
+    height: 100%;
+    background-color: gray;
 }
 
