@@ -2,7 +2,7 @@
     --bg: darkslateblue;
     --board-container-bg: #94a3b8;
     --board-bg: #e2e8f0;
-    --fg: #1e293b;
+    --fg: #1e293baa;
 }
 
 body {
@@ -56,3 +56,9 @@ body {
     background-color: gray;
 }
 
+.square.knight {
+    background-image: url('./assets/knight.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
