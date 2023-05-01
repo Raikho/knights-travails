@@ -12,7 +12,7 @@ for (let i = 8; i >= 1; i--) {
         if((i % 2) === (j % 2))
             node.classList.add('dark');
 
-        node.textContent = `${i} ${getLetter(j)}`; // DEBUG
+        // node.textContent = `${i} ${getLetter(j)}`; // DEBUG
         boardNode.appendChild(node);
     }
 }
