@@ -1,21 +1,13 @@
 import './style.css'
+import DOM from './dom.js'
+import Board from './board.js'
+
 
 // add board squares
 let boardNode = document.getElementById('board');
-for (let i = 8; i >= 1; i--) {
-    for (let j = 1; j <= 8; j++) {
-        let node = document.createElement('div');
-        node.classList.add('square');
-        node.dataset.y = i;
-        node.dataset.x = j;
+DOM.createSquares(document.getElementById('board'));
+let board = new Board();
 
-        if((i % 2) === (j % 2))
-            node.classList.add('dark');
-
-        // node.textContent = `${i} ${getLetter(j)}`; // DEBUG
-        boardNode.appendChild(node);
-    }
-}
 
 function getLetter(num) {
     return String.fromCharCode(97 + num);
@@ -45,8 +37,11 @@ function setOutline(x, y) {
     node.dataset.type='outline';
 }
 
-setKnight(2,4);
-setTarget(8,3);
+// setKnight(2,4);
+// setTarget(8,3);
+
+board.setKnight(4,5);
+board.setTarget(7,8);
 
 class Node {
     constructor(coords) {
@@ -73,13 +68,13 @@ class Tree {
                 continue;
             this.children.push([x,y]);
         }
-        console.log(this.children);
+        // console.log(this.children);
     }
 }
 
 let tree = new Tree([2,4], [8,3]);
 for (let child of tree.children) {
-    setOutline(child[0], child[1]);
+    //setOutline(child[0], child[1]);
 }
 
 // Attributions
