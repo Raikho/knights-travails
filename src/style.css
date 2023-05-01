@@ -56,8 +56,20 @@ body {
     background-color: gray;
 }
 
-.square.knight {
+.square[data-type="knight"] {
     background-image: url('./assets/knight.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+.square[data-type="target"] {
+    background-image: url('./assets/target.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+.square[data-type="outline"] {
+    background-image: url('./assets/knight_outline.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 50% 50%;
