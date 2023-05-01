@@ -11,8 +11,6 @@ export default class Board {
             this.squares[x][y] = node.dataset;
         }
 
-        console.log('squares: ', this.squares);
-
         this.knight = null;
         this.target = null;
     }

@@ -11,8 +11,7 @@ DOM.createSquares = function(parentNode) {
             if((i % 2) === (j % 2))
                 node.classList.add('dark');
 
-            node.textContent = `${node.dataset.x}, ${node.dataset.y}`
-
+            // node.textContent = `${node.dataset.x}, ${node.dataset.y}`
             parentNode.appendChild(node);
         }
     }
