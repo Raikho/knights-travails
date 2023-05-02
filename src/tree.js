@@ -11,15 +11,6 @@ class Node {
     isTouching(node) {
         return (this.x === node.x && this.y === node.y) ? true : false;
     }
-    isTouchingAnyParent() {
-        let parent = this.parent;
-        while (parent) {
-            if (this.isTouching(parent))
-                return true;
-            parent = parent.parent;
-        }
-        return false;
-    }
 }
 
 export default class Tree {
@@ -54,8 +45,6 @@ export default class Tree {
                 let child = new Node([node.x+move[0], node.y+move[1]], node);
 
                 if (!child.inBounds)
-                    continue;
-                if (child.isTouchingAnyParent())
                     continue;
                 if (child.isTouching(end))
                     return child;
