@@ -57,9 +57,11 @@ button:active {box-shadow: inset 0px 0px 5px #c1c1c1;}
     background-color: var(--board-container-bg);
     padding: 40px 20px;
     border-radius: 5px;
-    font-size: 20px;
 }
 #results-container>* {
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: bold;
     text-align: end;
 }
 
