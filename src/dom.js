@@ -27,4 +27,20 @@ DOM.removeClickCallback = function(callback) {
         node.removeEventListener('click', callback);
 }
 
+DOM.writeSolution = function(solution) {
+    let node = document.getElementById('results-container')
+    for (let i = 0; i < solution.length; i++) {
+        let x = solution[i][0];
+        let y = solution[i][1];
+        let label = (i == 0) ? 'Start' : `Move ${i}`;
+        this.createDiv(node, `${label}: ${x}, ${y}\n`);
+    }
+}
+
+DOM.createDiv = function(parentNode, text) {
+    let node = document.createElement('div');
+    node.textContent = text;
+    parentNode.appendChild(node);
+}
+
 export default DOM;

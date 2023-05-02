@@ -51,6 +51,7 @@ function drawSolution(board) {
     let solution = tree.solution;
     for (let i = 1; i < solution.length - 1; i++)
         board.setOutline(solution[i][0], solution[i][1]);
+    DOM.writeSolution(solution);
 }
 
 setRandomPieces(board);
