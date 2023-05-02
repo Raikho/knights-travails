@@ -3,6 +3,10 @@
     --board-container-bg: #94a3b8;
     --board-bg: #e2e8f0;
     --fg: #1e293baa;
+
+    --skyBlue: #38bdf8;
+    --indigo: #050507aa;
+    --accent: #0E7490;
 }
 
 body {
@@ -16,7 +20,7 @@ body {
     font-size: 18px;
 
     display: grid;
-    grid-template-columns: 1fr 10fr 1fr;
+    grid-template-columns: 1fr min-content 1fr;
     grid-template-rows: 1fr min-content;
     grid-template-areas:
         "controls board results"
@@ -26,7 +30,28 @@ body {
 }
 
 /* =========================== CONTROLS ============================= */
+#controls-container {
+    grid-area: controls;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+button {
+    background-color: var(--accent);
+    color: var(--board-bg);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 4px 4px 8px #0003;;
+    font-size: 20px;
+    font-weight: bold;
+    width: 150px;
+    padding: 8px 16px;
+}
+button:hover {filter: brightness(1.1);}
+button:active {box-shadow: inset 0px 0px 5px #c1c1c1;}
+
 /* ============================ RESULTS ============================= */
+
 /* ============================ FOOTER ============================= */
 #footer {
     grid-area: footer;

@@ -17,4 +17,14 @@ DOM.createSquares = function(parentNode) {
     }
 }
 
+DOM.addClickCallback = function(callback) {
+    for (let node of document.querySelectorAll('.square'))
+        node.addEventListener('click', callback);
+}
+
+DOM.removeClickCallback = function(callback) {
+    for (let node of document.querySelectorAll('.square'))
+        node.removeEventListener('click', callback);
+}
+
 export default DOM;

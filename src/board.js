@@ -18,6 +18,12 @@ export default class Board {
     clearSquare(x, y) {
         this.squares[x][y].type = '';
     }
+    clearSolution() {
+        for (let x = 1; x < 9; x++)
+            for (let y = 1; y < 9; y++)
+                if (this.squares[x][y].type === 'outline')
+                    this.squares[x][y].type = '';
+    }
 
     setKnight(x, y) {
         if (this.knight)
@@ -35,5 +41,4 @@ export default class Board {
         this.clearSquare(x,y);
         this.squares[x][y].type = 'outline';
     }
-
 }
