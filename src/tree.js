@@ -1,9 +1,24 @@
 class Node {
-    constructor(coords) {
+    constructor(coords, parent) {
         this.x = coords[0];
         this.y = coords[1];
-        this.parent = null;
+        this.parent = parent;
         this.children = [];
+    }
+    get inBounds() {
+        return (this.x < 1 || this.x > 8 || this.y < 1 || this.y > 8) ? false : true;
+    }
+    isTouching(node) {
+        return (this.x === node.x && this.y === node.y) ? true : false;
+    }
+    isTouchingAnyParent() {
+        let parent = this.parent;
+        while (parent) {
+            if (this.isTouching(parent))
+                return true;
+            parent = parent.parent;
+        }
+        return false;
     }
 }
 
@@ -14,30 +29,41 @@ export default class Tree {
         this.knight = new Node(knight);
         this.target = new Node(target);
 
-        this.createChildren(this.knight);
-        for (let child of this.knight.children)
-            this.createChildren(child);
+        // find target by creating tree
+        this.lastChild = this.findTarget(this.knight, this.target);
+
+        // get array;
+        this.solution = [];
+        let child = this.lastChild;
+        while (child.parent) {
+            this.solution.unshift([child.x, child.y,]);
+            child = child.parent;
+        }
+        this.solution.unshift([child.x, child.y,]);
+
+        console.log('knight: ', this.knight);
+        console.log('last child: ', this.lastChild);
+        console.log('solution: ', this.solution);
     }
 
-    createChildren(node) {
-        for (let move of this.moves) {
-            let x = node.x + move[0];
-            let y = node.y + move[1];
-            if (x < 1 || x > 8 || y < 1 || y > 8)
-                continue;
+    findTarget(start, end) {
+        let queue = [start];
+        while (queue.length) {
+            let node = queue.shift();
+            for (let move of this.moves) {
+                let child = new Node([node.x+move[0], node.y+move[1]], node);
 
-            if (x == this.knight.x && y == this.knight.y)
-                continue;
-            if (x == this.target.x && y == this.target.y)
-                continue;
+                if (!child.inBounds)
+                    continue;
+                if (child.isTouchingAnyParent())
+                    continue;
+                if (child.isTouching(end))
+                    return child;
 
-            let dx = Math.abs(this.target.x - node.x) - Math.abs(this.target.x - x);
-            let dy = Math.abs(this.target.y - node.y) - Math.abs(this.target.y - y);
-            //console.log(`knight ${x},${y} | dx: ${dx} | dy: ${dy} | closer: ${(dx>0||dy>0)}`);
-            if (!(dx>0 || dy>0) || dx<=-2 || dy <=-2)
-                continue;
-
-            node.children.push(new Node([x,y]));
+                node.children.push(child);
+                queue.push(child);
+            }
         }
+        return;
     }
 }
