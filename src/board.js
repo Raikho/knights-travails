@@ -32,7 +32,6 @@ export default class Board {
         this.target = [x, y];
     }
     setOutline(x, y) {
-        // console.log('this.squares: ', this.squares); // DEBUG
         this.clearSquare(x,y);
         this.squares[x][y].type = 'outline';
     }
