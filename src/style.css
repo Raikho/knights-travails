@@ -9,6 +9,10 @@
     --accent: #0E7490;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     height: 100vh;
     width: 100vw;
@@ -20,13 +24,27 @@ body {
     font-size: 18px;
 
     display: grid;
-    grid-template-columns: 1fr min-content 1fr;
+    grid-template-columns: 1fr min-content 5% min-content 1fr;
     grid-template-rows: 1fr min-content;
     grid-template-areas:
-        "controls board results"
-        "footer footer footer";
+        ". info . board ."
+        "footer footer footer footer footer";
     justify-items: center;
     align-items: center;
+}
+
+#info-container {
+    height: 70vmin;
+    grid-area: info;
+    border: 2px dotted yellowgreen;
+    background-color: var(--board-container-bg);
+    border-radius: 5px;
+    padding: 40px 20px;
+
+    display: grid;
+    grid-template-rows: 1fr min-content 200px 1fr;
+    grid-template-areas: "." "controls" "results" ".";
+    gap: 20px;
 }
 
 /* =========================== CONTROLS ============================= */
@@ -52,12 +70,7 @@ button:active {box-shadow: inset 0px 0px 5px #c1c1c1;}
 
 /* ============================ RESULTS ============================= */
 
-#results-container {
-    grid-area: results;
-    background-color: var(--board-container-bg);
-    padding: 40px 20px;
-    border-radius: 5px;
-}
+#results-container {grid-area: results;}
 #results-container>* {
     font-family: monospace;
     font-size: 20px;
@@ -80,8 +93,8 @@ a {
 /* ============================= MAIN ============================== */
 #board-container {
     grid-area: board;
-    height: 60vmin;
-    width: 60vmin;
+    height: 70vmin;
+    width: 70vmin;
     background-color: var(--board-container-bg);
 
     display: flex;
